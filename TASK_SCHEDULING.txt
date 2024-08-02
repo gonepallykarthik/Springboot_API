@@ -1,0 +1,12 @@
+create database TASK_SCHEDULING;
+use TASK_SCHEDULING;
+create table user(user_id int primary key,username varchar(100),email varchar(100),passw varchar(100));
+create table project(pid int primary key,pname varchar(100),descr varchar(100));
+create table deadline(did int primary key,date date );
+create table prior(prid int primary key,prilevel varchar(100));
+create table calender(cid int primary key,date date,event varchar(100),u_id int,foreign key(u_id) references user(user_id));
+create table report(rid int primary key,rname varchar(100),description varchar(100),u_id int,foreign key(u_id)references user(user_id));
+create table notify(nid int primary key,ntype varchar(100),msg varchar(100),u_id int,foreign key(u_id) references user(user_id) );
+create table task(tid int primary key,tname varchar(100),descrip varchar(100),did int,foreign key(did) references deadline(did),prid int,foreign key(prid) references prior(prid),u_id int,foreign key(u_id) references user(user_id),pid int,foreign key(pid) references project(pid));
+create table subtask(sid int primary key,sname varchar(100),description varchar(100),tid int,foreign key(tid) references task(tid));
+create table collaboration(cid int primary key,tid int, foreign key(tid)references task(tid),u_id int,foreign key(u_id)references user(user_id));

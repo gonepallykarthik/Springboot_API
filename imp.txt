@@ -1,0 +1,114 @@
+create table user(user_id int primary key auto_increment,username varchar(100),email varchar(100),passw varchar(100));
+create table project(pid int primary key auto_increment,pname varchar(100),descr varchar(100));
+create table deadline(did int primary key auto_increment,date date );
+create table prior(prid int primary key auto_increment,prilevel varchar(100));
+create table calender(cid int primary key auto_increment,date date,event varchar(100),u_id int,foreign key(u_id) references user(user_id));
+create table report(rid int primary key auto_increment,rname varchar(100),description varchar(100),u_id int,foreign key(u_id)references user(user_id));
+create table notify(nid int primary key auto_increment,ntype varchar(100),msg varchar(100),u_id int,foreign key(u_id) references user(user_id) );
+create table task(tid int primary key auto_increment,tname varchar(100),descrip varchar(100),did int,foreign key(did) references deadline(did),prid int,foreign key(prid) references prior(prid),u_id int,foreign key(u_id) references user(user_id),pid int,foreign key(pid) references project(pid));
+create table subtask(sid int primary key auto_increment,sname varchar(100),description varchar(100),tid int,foreign key(tid) references task(tid));
+create table collaboration(cid int primary key auto_increment,tid int, foreign key(tid)references task(tid),u_id int,foreign key(u_id)references user(user_id));
+Insert into user(username,email,passw) values("johnVet","john.vet@gmail.com","john@123");
+Insert into user(username,email,passw) values ("Daniel","Daniel@gmail.com","Daniel22"),("Emily22", "Emily22@gmail.com", "Emily123"),("James123", "James123@yahoo.com", "James456"),
+("Sophia_1", "Sophia_1@hotmail.com", "Sophia789"),
+("Oliver99", "Oliver99@outlook.com", "Oliver987"),
+("Ava88", "Ava88@gmail.com", "Ava456"),
+("Liam_Green", "Liam_Green@yahoo.com", "Liam987"),
+("EmmaSmith", "EmmaSmith@gmail.com", "Emma123"),
+("Noah_Brown", "Noah_Brown@hotmail.com", "Noah456"),
+("Isabella22", "Isabella22@gmail.com", "Isabella789"),
+("Lucas_1999", "Lucas_1999@yahoo.com", "Lucas123"),
+("MiaK", "MiaK@gmail.com", "Mia456"),
+("William_Jones", "William_Jones@hotmail.com", "William789"),
+("Charlotte_C", "Charlotte_C@yahoo.com", "Charlotte123"),
+("Benjamin_A", "Benjamin_A@gmail.com", "Benjamin456"),
+("Amelia_Olson", "Amelia_Olson@hotmail.com", "Amelia789"),
+("Ethan_Miller", "Ethan_Miller@yahoo.com", "Ethan123"),
+("Harper_W", "Harper_W@gmail.com", "Harper456"),
+("Michael_D", "Michael_D@hotmail.com", "Michael789"),
+("EvelynSmith", "EvelynSmith@yahoo.com", "Evelyn123"),
+("Daniel.P", "Daniel.P@gmail.com", "Daniel.P123"),
+("Emily.Brown", "Emily.Brown@hotmail.com", "Emily.Brown456"),
+("JamesCarter", "JamesCarter@gmail.com", "JamesCarter789"),
+("Sophia2", "Sophia2@yahoo.com", "Sophia2_123"),
+("Olivia_R", "Olivia_R@hotmail.com", "Olivia_R456"),
+("LiamSmith", "LiamSmith@gmail.com", "LiamSmith789"),
+("Emma_Wilson", "Emma_Wilson@yahoo.com", "Emma_Wilson123"),
+("NoahJones", "NoahJones@hotmail.com", "NoahJones456"),
+("Isabella_White", "Isabella_White@gmail.com", "Isabella_White789"),
+("Lucas_Brown", "Lucas_Brown@yahoo.com", "Lucas_Brown123"),
+("Mia.D", "Mia.D@gmail.com", "Mia.D456"),
+("William.Parker", "William.Parker@hotmail.com", "William.Parker789"),
+("CharlotteCarter", "CharlotteCarter@yahoo.com", "CharlotteCarter123"),
+("Benjamin_W", "Benjamin_W@gmail.com", "Benjamin_W456"),
+("AmeliaJ", "AmeliaJ@hotmail.com", "AmeliaJ789"),
+("EthanG", "EthanG@gmail.com", "EthanG123"),
+("Harper.White", "Harper.White@yahoo.com", "Harper.White456"),
+("Michael.Smith", "Michael.Smith@gmail.com", "Michael.Smith789"),
+("Evelyn_H", "Evelyn_H@hotmail.com", "Evelyn_H123"),
+("DanielC", "DanielC@yahoo.com", "DanielC456"),
+("Emily.W", "Emily.W@gmail.com", "Emily.W789"),
+("James_P", "James_P@hotmail.com", "James_P123"),
+("SophiaCarter", "SophiaCarter@yahoo.com", "SophiaCarter456"),
+("Olivia.G", "Olivia.G@gmail.com", "Olivia.G789"),
+("Liam_Brown", "Liam_Brown@hotmail.com", "Liam_Brown123"),
+("Emma.K", "Emma.K@yahoo.com", "Emma.K456");
+INSERT INTO User (username, email, passw) VALUES
+("Sophie_34", "Sophie_34@gmail.com", "Sophie_123"),
+("MaxSmith", "MaxSmith@hotmail.com", "Max789"),
+("Aria.Jones", "Aria.Jones@yahoo.com", "Aria456");
+select * from user;
+insert into project(pname,descr) values("Weather Forecasting","This project aims to forecast the weather."),("Marketing Campaign", "This project involves creating and executing marketing strategies to increase brand awareness."),
+("Product Development", "This project aims to develop a new product line to meet market demands."),
+("Website Redesign", "This project involves redesigning the company website to improve usability and functionality."),
+("Data Analysis", "This project focuses on analyzing large datasets to extract meaningful insights."),
+("Customer Relationship Management", "This project aims to implement a CRM system to better manage customer interactions."),
+("Training Program", "This project involves developing and implementing a training program for employees."),
+("Supply Chain Optimization", "This project focuses on optimizing the supply chain to reduce costs."),
+("Quality Assurance", "This project aims to implement quality assurance processes to ensure product reliability."),
+("Research and Development", "This project involves conducting research to innovate and develop new products."),
+("Event Planning", "This project involves planning and organizing corporate events to engage clients."),
+("Financial Analysis", "This project focuses on analyzing financial data to assess performance."),
+("Content Creation", "This project involves creating engaging content for marketing campaigns."),
+("Human Resources Management", "This project aims to streamline HR processes and improve employee satisfaction."),
+("E-commerce Platform Development", "This project involves developing an e-commerce platform."),
+("Customer Feedback Survey", "This project aims to gather customer feedback to identify areas for improvement."),
+("Inventory Management System", "This project involves implementing an inventory management system."),
+("Public Relations Campaign", "This project involves developing and executing PR strategies."),
+("Healthcare IT Integration", "This project aims to integrate various healthcare IT systems."),
+("Sustainability Initiative", "This project focuses on implementing sustainable practices."),
+("Training and Development", "This project involves providing training and development opportunities."),
+("Mobile App Development", "This project aims to develop a mobile application."),
+("Risk Management", "This project focuses on identifying and mitigating risks."),
+("Digital Marketing Strategy", "This project involves developing and implementing digital marketing strategies."),
+("Facility Expansion", "This project aims to expand company facilities."),
+("Cybersecurity Enhancement", "This project involves strengthening cybersecurity measures."),
+("Customer Support Improvement", "This project aims to enhance customer support services."),
+("Social Media Management", "This project involves managing and optimizing social media channels."),
+("IT Infrastructure Upgrade", "This project aims to upgrade IT infrastructure."),
+("Product Launch", "This project involves planning and executing the launch of a new product."),
+("Strategic Planning", "This project focuses on developing long-term strategic plans."),
+("Community Outreach Program", "This project involves engaging with the local community."),
+("Market Research", "This project aims to conduct market research."),
+("Employee Wellness Program", "This project involves implementing wellness programs."),
+("Digital Transformation", "This project focuses on digitally transforming business processes."),
+("Brand Identity Development", "This project involves developing brand identity."),
+("Product Testing and QA", "This project aims to conduct product testing and QA."),
+("Community Development Initiative", "This project involves collaborating with local communities."),
+("Market Expansion Strategy", "This project aims to expand market reach."),
+("Employee Training Portal", "This project involves developing an online training portal."),
+("Corporate Social Responsibility", "This project focuses on corporate social responsibility."),
+("Sales Performance Optimization", "This project aims to optimize sales performance."),
+("Disaster Recovery Plan", "This project involves developing a disaster recovery plan."),
+("Brand Awareness Campaign", "This project involves creating campaigns for brand awareness."),
+("Remote Work Infrastructure", "This project aims to establish remote work infrastructure."),
+("Digital Content Strategy", "This project involves developing a digital content strategy."),
+("Customer Retention Program", "This project aims to implement customer retention strategies."),
+("Compliance and Regulations", "This project focuses on compliance and regulations.");
+ALTER TABLE Project AUTO_INCREMENT = 1;
+select * from project;
+select * from user;
+ALTER TABLE Project AUTO_INCREMENT = 1;
+select * from project;
+
+
